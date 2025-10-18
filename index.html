@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Limpadua - Catálogo de Designs por Inácio Pimenta</title>
+    
+    <!-- Tailwind CSS via CDN --><script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts: Inter --><link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- AOS (Animate On Scroll) Library --><link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <style>
+        /* Estilos personalizados para aprimorar o design */
+        body {
+            font-family: 'Inter', sans-serif;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            background-color: #f8fafc; /* Tom de cinza muito claro (slate-50) */
+        }
+
+        /* Fundo do Hero com gradiente sutil, inspirado na limpeza e modernidade */
+        .hero-bg {
+            background-color: #0B3D91;
+            background-image: 
+                linear-gradient(135deg, rgba(255, 255, 255, 0.03) 25%, transparent 25%),
+                linear-gradient(225deg, rgba(255, 255, 255, 0.03) 25%, transparent 25%),
+                linear-gradient(45deg, rgba(255, 255, 255, 0.03) 25%, transparent 25%),
+                linear-gradient(315deg, rgba(255, 255, 255, 0.03) 25%, #0B3D91 25%);
+            background-position: 10px 0, 10px 0, 0 0, 0 0;
+            background-size: 20px 20px;
+            background-repeat: repeat;
+        }
+        
+        /* Efeito de hover aprimorado nos cards de produto */
+        .product-card {
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.25);
+        }
+        
+        /* Animação de zoom na imagem do card ao passar o mouse */
+        .product-card .product-image {
+            transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .product-card:hover .product-image {
+            transform: scale(1.05);
+        }
+
+        /* Animação para botões */
+        .animated-button {
+            transition: transform 0.2s ease, background-color 0.3s;
+        }
+        .animated-button:hover {
+            transform: translateY(-2px);
+        }
+        
+        /* Estilo do header ao rolar a página */
+        .header-scrolled {
+            background-color: white;
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+        }
+
+        /* Estilos do Lightbox */
+        .lightbox {
+            display: none; /* Escondido por padrão */
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0,0,0,0.8); /* Fundo escuro */
+            align-items: center;
+            justify-content: center;
+            animation: fadeIn 0.3s ease-out;
+        }
+
+        .lightbox-content {
+            position: relative;
+            margin: auto;
+            display: block;
+            max-width: 90%;
+            max-height: 90%;
+            object-fit: contain; /* Garante que a imagem se ajuste */
+            animation: zoomIn 0.3s ease-out;
+        }
+
+        .lightbox-caption {
+            text-align: center;
+            color: #ccc;
+            padding: 10px 0;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: 20px;
+            right: 35px;
+            color: #fff;
+            font-size: 40px;
+            font-weight: bold;
+            transition: 0.3s;
+            cursor: pointer;
+        }
+
+        .lightbox-close:hover,
+        .lightbox-close:focus {
+            color: #bbb;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        /* Animações */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes zoomIn {
+            from { transform: scale(0.8); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+
+        /* Estilo para imagens clicáveis no card */
+        .clickable-image {
+            cursor: zoom-in;
+            transition: transform 0.2s ease;
+        }
+        .clickable-image:hover {
+            transform: scale(1.02);
+        }
+
+    </style>
+</head>
+<body class="text-gray-800">
+
+    <!-- ===== CABEÇALHO - MODO APRESENTAÇÃO ===== --><header id="main-header" class="bg-white/80 backdrop-blur-lg fixed top-0 z-50 w-full transition-all duration-300 border-b border-transparent">
+        <div class="container mx-auto px-6 py-4 flex flex-col md:flex-row justify-between items-center text-center md:text-left">
+            <h1 class="text-xl font-bold text-[#0B3D91]">
+                Proposta de Design: <span class="font-extrabold">Nova Linha Limpadua</span>
+            </h1>
+            <p class="text-sm text-gray-600 mt-2 md:mt-0">
+                Apresentado por: <span class="font-semibold">Inácio da Silva Mota Pimenta</span>
+            </p>
+        </div>
+    </header>
+
+    <main class="mt-[105px] md:mt-[72px]">
+        <!-- ===== SEÇÃO PRINCIPAL (HERO) ===== --><section class="hero-bg text-white relative overflow-hidden">
+            <div class="container mx-auto px-6 py-24 md:py-32 text-center">
+                <h1 class="text-4xl md:text-6xl font-extrabold mt-4 mb-6 leading-tight" data-aos="fade-up">
+                    Portfólio de Designs de Embalagens
+                </h1>
+            </div>
+        </section>
+
+        <!-- ===== SEÇÃO DO CATÁLOGO DE PRODUTOS ===== --><section id="catalogo" class="container mx-auto px-6 py-20">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <h2 class="text-3xl md:text-4xl font-bold text-[#0B3D91]">Design em Destaque</h2>
+                <p class="text-gray-600 mt-2 max-w-2xl mx-auto">Um conceito criado para destacar o produto no ponto de venda e conectar-se com o consumidor.</p>
+            </div>
+
+            <!-- Container para centralizar o produto e suas imagens --><div class="flex justify-center">
+                
+                <!-- Card do Produto em Destaque --><div class="product-card bg-white rounded-2xl shadow-lg overflow-hidden flex flex-col max-w-4xl lg:flex-row" data-aos="fade-up" data-aos-delay="100">
+                    
+                    <!-- Coluna das Imagens (Rótulo e Mockup) --><div class="w-full lg:w-1/2 p-4 md:p-8 flex flex-col justify-center items-center bg-gray-50 border-r border-gray-100">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 w-full">
+                            <!-- Imagem do Rótulo --><div class="bg-white rounded-lg p-2 md:p-4 shadow-md clickable-image" data-aos="zoom-in" data-aos-delay="200">
+                                <p class="text-center text-gray-500 text-sm mb-2">Rótulo</p>
+                                <!-- COLOQUE AQUI O LINK DA IMAGEM DO SEU RÓTULO --><img src="src/rosa/Rótulo 2.png" 
+                                     alt="Design do Rótulo Limpador Perfumado Pétala Rosa" 
+                                     class="w-full h-auto object-contain"
+                                     data-lightbox-src="src/rosa/Rótulo 2.png"
+                                     data-lightbox-caption="Limpador Perfumado Pétala Rosa - Detalhe do Rótulo"
+                                     onerror="this.onerror=null;this.src='https://placehold.co/600x600/FFE4E1/333?text=R%C3%B3tulo';">
+                            </div>
+
+                            <!-- Imagem do Mockup --><div class="bg-white rounded-lg p-2 md:p-4 shadow-md clickable-image" data-aos="zoom-in" data-aos-delay="300">
+                                <p class="text-center text-gray-500 text-sm mb-2">Mockup</p>
+                                <!-- COLOQUE AQUI O LINK DA IMAGEM DO SEU MOCKUP --><img src="src/rosa/Mockup.png" 
+                                     alt="Mockup do Limpador Perfumado Pétala Rosa" 
+                                     class="w-full h-auto object-contain"
+                                     data-lightbox-src="src/rosa/Mockup.png"
+                                     data-lightbox-caption="Limpador Perfumado Pétala Rosa - Mockup da Embalagem"
+                                     onerror="this.onerror=null;this.src='https://placehold.co/600x600/FFE4E1/333?text=Mockup';">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Coluna de Informações do Produto --><div class="w-full lg:w-1/2 p-6 md:p-8 flex flex-col justify-center">
+                        <span class="text-sm font-bold text-pink-600 uppercase mb-2">Linha Limpadores Perfumados</span>
+                        <h3 class="text-2xl md:text-3xl font-bold text-gray-900 mt-2">Limpador Perfumado Pétala Rosa</h3>
+                        <p class="text-gray-600 mt-4 leading-relaxed flex-grow">
+                            Um design elegante e sofisticado que evoca a suavidade e o frescor das pétalas de rosa. A proposta visual comunica de forma clara a delicadeza do aroma e a eficácia na limpeza, criando uma conexão emocional com o consumidor. Ideal para quem busca um toque de requinte no cuidado com o lar, garantindo uma experiência sensorial agradável e uma duração prolongada do perfume.
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- ===== SEÇÃO DESIGNER ===== --><section id="designer" class="bg-white">
+            <div class="container mx-auto px-6 py-20" data-aos="fade-up">
+                <div class="max-w-4xl mx-auto text-center">
+                     <div class="mt-8">
+                         <p class="text-xl font-bold">Inácio da Silva Mota Pimenta</p>
+                         <a href="https://portfolio-inacio.vercel.app/" 
+                           target="_blank" 
+                           rel="noopener noreferrer"
+                           class="mt-6 inline-block bg-red-600 text-white font-semibold px-8 py-3 rounded-lg hover:bg-red-700 transition-colors duration-300 shadow-lg animated-button">
+                            Portfólio Inácio
+                        </a>
+                     </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- ===== RODAPÉ ===== --><footer class="bg-gray-900 text-white">
+        <div class="container mx-auto px-6 py-10 text-center">
+            <p class="font-semibold text-lg">
+                Um projeto de design por Inácio da Silva Mota Pimenta
+            </p>
+            <p class="text-gray-400 mt-3 text-sm">
+                © 2025 Limpadua. Todos os direitos reservados. Este é um site conceitual de portfólio.
+            </p>
+        </div>
+    </footer>
+    
+    <!-- ===== LIGHTBOX (Expandir Imagem) ===== --><div id="lightbox" class="lightbox">
+        <span class="lightbox-close">&times;</span>
+        <img class="lightbox-content" id="lightbox-img">
+        <div id="lightbox-caption" class="lightbox-caption"></div>
+    </div>
+
+    <!-- Scripts --><script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        // Inicializa a biblioteca de animação ao rolar
+        AOS.init({
+            duration: 700,
+            once: true,
+            offset: 50,
+        });
+
+        // Lógica para animar o cabeçalho ao rolar a página
+        const header = document.getElementById('main-header');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                header.classList.add('header-scrolled');
+                header.classList.remove('bg-white/80', 'backdrop-blur-lg');
+            } else {
+                header.classList.remove('header-scrolled');
+                header.classList.add('bg-white/80', 'backdrop-blur-lg');
+            }
+        });
+
+        // Lógica do Lightbox
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImg = document.getElementById('lightbox-img');
+        const lightboxCaption = document.getElementById('lightbox-caption');
+        const closeBtn = document.getElementsByClassName('lightbox-close')[0];
+
+        document.querySelectorAll('.clickable-image img').forEach(img => {
+            img.addEventListener('click', function() {
+                lightbox.style.display = 'flex'; // Exibe o lightbox
+                lightboxImg.src = this.dataset.lightboxSrc || this.src;
+                lightboxCaption.innerHTML = this.dataset.lightboxCaption || this.alt;
+            });
+        });
+
+        closeBtn.addEventListener('click', () => {
+            lightbox.style.display = 'none'; // Esconde o lightbox
+        });
+
+        lightbox.addEventListener('click', (event) => {
+            if (event.target === lightbox) { // Fecha se clicar fora da imagem
+                lightbox.style.display = 'none';
+            }
+        });
+
+        // Fechar com tecla ESC
+        document.addEventListener('keydown', (event) => {
+            if (event.key === 'Escape' && lightbox.style.display === 'flex') {
+                lightbox.style.display = 'none';
+            }
+        });
+    </script>
+
+</body>
+</html>
+
